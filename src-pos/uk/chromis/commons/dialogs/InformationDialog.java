@@ -82,7 +82,7 @@ public class InformationDialog extends JDialog {
 
         if (showLogo) {
             logoPanel = new JPanel(new MigLayout("", "[500]"));
-            ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("/uk/chromis/fixedimages/chromislogo_small.png"));
+            ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("/uk/chromis/fixedimages/azorlogo_small.png"));
             JLabel imageLabel = new JLabel(imageIcon);
             logoPanel.add(imageLabel, "align left");
             mainPanel.add(logoPanel, "wrap");

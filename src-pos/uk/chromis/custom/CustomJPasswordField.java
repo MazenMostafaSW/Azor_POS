@@ -25,9 +25,11 @@
 
 package uk.chromis.custom;
 
+import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JPasswordField;
+import uk.chromis.pos.util.RTLSupport;
 
 /**
  *
@@ -40,5 +42,12 @@ import javax.swing.JPasswordField;
             this.setText("");
             this.setFont(font);
             this.setPreferredSize(dimension);
+
+            // Apply RTL support
+            ComponentOrientation orientation = RTLSupport.getOrientation();
+            this.applyComponentOrientation(orientation);
+            if (RTLSupport.isRTL()) {
+                this.setHorizontalAlignment(JPasswordField.RIGHT);
+            }
         }
     }

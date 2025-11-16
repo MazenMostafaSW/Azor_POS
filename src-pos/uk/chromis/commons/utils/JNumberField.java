@@ -23,6 +23,7 @@
  */
 package uk.chromis.commons.utils;
 
+import java.awt.ComponentOrientation;
 import java.awt.Insets;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -37,6 +38,7 @@ import javax.swing.JTextField;
 import org.apache.commons.lang.StringUtils;
 import static uk.chromis.globals.SystemProperty.USERCOUNTRY;
 import static uk.chromis.globals.SystemProperty.USERLANGUAGE;
+import uk.chromis.pos.util.RTLSupport;
 
 public class JNumberField extends JTextField {
 
@@ -115,10 +117,20 @@ public class JNumberField extends JTextField {
                 }
             };
             checkKeyTyped(true, this.decimalPlaces);
-            setHorizontalAlignment(4);
+
+            // Apply RTL-aware alignment
+            if (RTLSupport.isRTL()) {
+                setHorizontalAlignment(JTextField.LEFT);  // Numbers align left in RTL
+            } else {
+                setHorizontalAlignment(JTextField.RIGHT);  // Numbers align right in LTR
+            }
+
             setMargin(new Insets(0, 0, 0, 3));
             df.setDecimalFormatSymbols(new DecimalFormatSymbols(currentLocale));
             setText(df.format(0.0D));
+
+            // Apply component orientation
+            applyComponentOrientation(RTLSupport.getOrientation());
         }
     }
 
@@ -136,9 +148,19 @@ public class JNumberField extends JTextField {
         this.decimal = decimal;
         this.decimalPlaces = decimalPlaces;
         checkKeyTyped(decimal, decimalPlaces);
-        setHorizontalAlignment(4);
+
+        // Apply RTL-aware alignment
+        if (RTLSupport.isRTL()) {
+            setHorizontalAlignment(JTextField.LEFT);  // Numbers align left in RTL
+        } else {
+            setHorizontalAlignment(JTextField.RIGHT);  // Numbers align right in LTR
+        }
+
         setMargin(new Insets(0, 0, 0, 3));
         setText(df.format(0.0D));
+
+        // Apply component orientation
+        applyComponentOrientation(RTLSupport.getOrientation());
     }
 
     private void checkKeyTyped(Boolean decimal, int decimalPlaces) {

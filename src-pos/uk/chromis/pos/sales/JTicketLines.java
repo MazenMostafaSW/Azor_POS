@@ -25,6 +25,7 @@ package uk.chromis.pos.sales;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -229,7 +230,20 @@ public class JTicketLines extends javax.swing.JPanel {
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             JLabel aux = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             aux.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-            aux.setHorizontalAlignment(m_acolumns[column].align);
+
+            // Apply RTL-aware alignment
+            int alignment = m_acolumns[column].align;
+            if (table.getComponentOrientation() == ComponentOrientation.RIGHT_TO_LEFT) {
+                // Flip alignment for RTL
+                if (alignment == javax.swing.SwingConstants.LEFT) {
+                    alignment = javax.swing.SwingConstants.RIGHT;
+                } else if (alignment == javax.swing.SwingConstants.RIGHT) {
+                    alignment = javax.swing.SwingConstants.LEFT;
+                }
+                // CENTER remains CENTER
+            }
+            aux.setHorizontalAlignment(alignment);
+
             aux.setFont(ChromisFonts.DEFAULTFONT);
             this.setBackground(processRowColour(row, isSelected));
             this.setForeground(getContrastColor(processRowColour(row, isSelected)));

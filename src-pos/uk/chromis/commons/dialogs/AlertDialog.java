@@ -37,6 +37,7 @@ import uk.chromis.custom.CustomColour;
 import uk.chromis.globals.IconFactory;
 import uk.chromis.osk.KeyBoard;
 import uk.chromis.pos.sales.CustomerDeliveryInfo;
+import uk.chromis.pos.util.RTLSupport;
 
 /**
  * @author John Lewis
@@ -74,6 +75,10 @@ public class AlertDialog extends JDialog {
         super(new JFrame(), strTitle);
         separator.setOrientation(JSeparator.HORIZONTAL);
         alertDialog(type, strHeaderText, strContextText, buttons, unDecorated);
+
+        // Apply RTL support
+        RTLSupport.applyOrientation(this);
+
         pack();
     }
 
@@ -81,6 +86,10 @@ public class AlertDialog extends JDialog {
         super(new JFrame(), strTitle);
         separator.setOrientation(JSeparator.HORIZONTAL);
         alertDialog(type, strHeaderText, strContextText, buttons);
+
+        // Apply RTL support
+        RTLSupport.applyOrientation(this);
+
         pack();
     }
 

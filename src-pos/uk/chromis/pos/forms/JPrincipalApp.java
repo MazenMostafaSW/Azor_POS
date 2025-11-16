@@ -64,6 +64,7 @@ import uk.chromis.pos.scripting.ScriptException;
 import uk.chromis.pos.scripting.ScriptFactory;
 import uk.chromis.pos.util.Hashcypher;
 import uk.chromis.pos.util.StringUtils;
+import uk.chromis.pos.util.RTLSupport;
 
 public class JPrincipalApp extends javax.swing.JPanel implements AppUserView {
 
@@ -456,6 +457,7 @@ public class JPrincipalApp extends javax.swing.JPanel implements AppUserView {
                     }
 
                     m_jMyView.getComponent().applyComponentOrientation(getComponentOrientation());
+                    RTLSupport.applyOrientation(m_jMyView.getComponent());
                     m_jPanelContainer.add(m_jMyView.getComponent(), sTaskClass);
                     m_aCreatedViews.put(sTaskClass, m_jMyView);
                 }

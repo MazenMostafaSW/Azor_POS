@@ -78,6 +78,7 @@ import uk.chromis.commons.utils.TerminalInfo;
 import uk.chromis.pos.printer.DeviceTicket;
 import uk.chromis.pos.printer.TicketParser;
 import uk.chromis.pos.printer.TicketPrinterException;
+import uk.chromis.pos.util.RTLSupport;
 import uk.chromis.pos.scale.DeviceScale;
 import uk.chromis.pos.scanpal2.DeviceScanner;
 import uk.chromis.pos.scanpal2.DeviceScannerFactory;
@@ -179,15 +180,17 @@ public class JRootApp extends JPanel implements AppView {
 
      //   logoLabel.setIcon(scaleImage(SystemProperty.STARTLOGO, 1024, 350));
 
-        chromisText.setText("<html><center><b>Chromis POS - Free Open Source POS Solution</b><br>"
-                + "Copyright \u00A9 2015 - 2023 Chromis <br>"
+        chromisText.setText("<html><center><b>AZOR POS - Point of Sale System</b><br>"
+                + "<b>This app developed by Mazen Mostafa</b><br>"
+                + "<br>"
+                + "Based on Chromis POS - Copyright \u00A9 2015 - 2023 Chromis <br>"
                 + "http://www.chromis.co.uk<br>"
                 + "<br>"
-                + "Chromis POS is Open Source Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br>"
+                + "AZOR POS is Open Source Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br>"
                 + "<br>"
-                + "Chromis POS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br>"
+                + "AZOR POS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br>"
                 + "<br>"
-                + "You should have received a copy of the GNU General Public License along with Chromis POS.  If not, see http://www.gnu.org/licenses/<br>"
+                + "You should have received a copy of the GNU General Public License along with AZOR POS.  If not, see http://www.gnu.org/licenses/<br>"
                 + "</center>");
         chromisText.setPreferredSize(new java.awt.Dimension(800, 300));
         chromisText.setFont(ChromisFonts.DEFAULTFONT.deriveFont(14f));
@@ -265,8 +268,13 @@ public class JRootApp extends JPanel implements AppView {
         terminal = new TerminalDataLogic();
         terminal.setTerminalVersion();
 
-        // support for different component orientation languages.
-        applyComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
+        // Initialize RTL support based on user language
+        RTLSupport.initialize();
+
+        // Apply component orientation for RTL languages
+        ComponentOrientation orientation = RTLSupport.getOrientation();
+        applyComponentOrientation(orientation);
+        RTLSupport.applyOrientation(this);
 
         try {
             String sActiveCashIndex = terminal.getActiveCash();
@@ -754,16 +762,18 @@ public class JRootApp extends JPanel implements AppView {
 
         jLabel1.setFont(ChromisFonts.DEFAULTFONT.deriveFont(12f));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(IconFactory.getIcon("chromislogo.png"));
-        jLabel1.setText("<html><center><b>Chromis POS - Free Open Source POS Solution</b><br>" +
-            "Copyright \u00A9 2015 - 2023 Chromis <br>" +
+        jLabel1.setIcon(IconFactory.getIcon("azorlogo.png"));
+        jLabel1.setText("<html><center><b>AZOR POS - Point of Sale System</b><br>" +
+            "<b>This app developed by Mazen Mostafa</b><br>" +
+            "<br>" +
+            "Based on Chromis POS - Copyright \u00A9 2015 - 2023 Chromis <br>" +
             "http://www.chromis.co.uk<br>" +
             "<br>" +
-            "Chromis POS is Open Source Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br>" +
+            "AZOR POS is Open Source Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br>" +
             "<br>" +
-            "Chromis POS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br>" +
+            "AZOR POS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br>" +
             "<br>" +
-            "You should have received a copy of the GNU General Public License along with Chromis POS.  If not, see http://www.gnu.org/licenses/<br>" +
+            "You should have received a copy of the GNU General Public License along with AZOR POS.  If not, see http://www.gnu.org/licenses/<br>" +
             "</center>");
         jLabel1.setAlignmentX(0.5F);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

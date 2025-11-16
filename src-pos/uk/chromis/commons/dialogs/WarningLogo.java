@@ -69,7 +69,7 @@ public class WarningLogo extends JDialog {
         btnExit.setFont(ChromisFonts.DEFAULTBUTTONFONT);
         btnExit.setFocusPainted(false);
         JLabel version = new JLabel();
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/fixedimages/verchromislogo.png")));
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/fixedimages/azorlogo.png")));
         textLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/fixedimages/runningtext.png")));
 
         version.setText("V" + AppLocal.APP_VERSION + "       ");

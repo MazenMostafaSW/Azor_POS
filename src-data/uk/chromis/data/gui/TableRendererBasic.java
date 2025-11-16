@@ -26,8 +26,10 @@
 package uk.chromis.data.gui;
 
 import java.awt.Component;
+import java.awt.ComponentOrientation;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import uk.chromis.format.Formats;
 
@@ -49,10 +51,22 @@ public class TableRendererBasic extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
 
         JLabel aux = (JLabel) super.getTableCellRendererComponent(table, null, isSelected, hasFocus, row, column);
-        
+
         aux.setText(m_aFormats[column].formatValue(value));
-        aux.setHorizontalAlignment(m_aFormats[column].getAlignment());
+
+        // Apply RTL-aware alignment
+        int alignment = m_aFormats[column].getAlignment();
+        if (table.getComponentOrientation() == ComponentOrientation.RIGHT_TO_LEFT) {
+            // Flip alignment for RTL
+            if (alignment == SwingConstants.LEFT) {
+                alignment = SwingConstants.RIGHT;
+            } else if (alignment == SwingConstants.RIGHT) {
+                alignment = SwingConstants.LEFT;
+            }
+            // CENTER remains CENTER
+        }
+        aux.setHorizontalAlignment(alignment);
 
         return aux;
-    }    
+    }
 }

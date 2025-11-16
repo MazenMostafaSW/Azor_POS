@@ -33,12 +33,13 @@ import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
 import uk.chromis.custom.CustomColour;
 import uk.chromis.custom.CustomJLabel;
-import uk.chromis.custom.CustomJPasswordField;  
+import uk.chromis.custom.CustomJPasswordField;
 import uk.chromis.custom.CustomJTextField;
 import uk.chromis.custom.ExtendedJButton;
 import uk.chromis.osk.KeyBoard;
 import uk.chromis.pos.forms.AppLocal;
 import uk.chromis.pos.forms.ChromisFonts;
+import uk.chromis.pos.util.RTLSupport;
 
 /**
  * @author John Lewis
@@ -66,6 +67,10 @@ public final class LoginDialog extends JDialog {
         super(new JFrame());
         keyBoard = KeyBoard.getKeyboard(KeyBoard.Layout.QWERTY);
         loginPane();
+
+        // Apply RTL support
+        RTLSupport.applyOrientation(this);
+
         pack();
     }
 
