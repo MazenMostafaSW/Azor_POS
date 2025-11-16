@@ -1,0 +1,29 @@
+{
+    "java.project.sourcePaths": [
+        "src-pos",
+        "src-beans",
+        "src-data"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/bin": true,
+        "**/build": true
+    },
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.saveActions.organizeImports": true,
+    "editor.formatOnSave": false,
+    "files.encoding": "utf8",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000
+}
+

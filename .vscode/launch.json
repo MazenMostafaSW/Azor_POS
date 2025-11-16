@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch AZOR POS",
+            "request": "launch",
+            "mainClass": "uk.chromis.pos.forms.StartPOS",
+            "projectName": "AZOR_POS",
+            "args": "",
+            "vmArgs": "-Xmx512m",
+            "classpath": [
+                "${workspaceFolder}/chromispos.jar",
+                "${workspaceFolder}/lib/*"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "Launch AZOR POS (Debug Mode)",
+            "request": "launch",
+            "mainClass": "uk.chromis.pos.forms.StartPOS",
+            "projectName": "AZOR_POS",
+            "args": "-debug",
+            "vmArgs": "-Xmx512m",
+            "classpath": [
+                "${workspaceFolder}/chromispos.jar",
+                "${workspaceFolder}/lib/*"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>target\azorpos.jar</jar>
+  <outfile>target\AZOR_POS.exe</outfile>
+  <errTitle>AZOR POS - Error</errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>https://www.oracle.com/java/technologies/downloads/</downloadUrl>
+  <supportUrl>https://www.chromis.co.uk</supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>azoricon.ico</icon>
+  <classPath>
+    <mainClass>uk.chromis.pos.forms.StartPOS</mainClass>
+    <cp>lib\*.jar</cp>
+  </classPath>
+  <jre>
+    <path>jre</path>
+    <bundledJre64Bit>true</bundledJre64Bit>
+    <bundledJreAsFallback>true</bundledJreAsFallback>
+    <minVersion>11</minVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64</runtimeBits>
+    <initialHeapSize>128</initialHeapSize>
+    <maxHeapSize>512</maxHeapSize>
+    <opt>-Dfile.encoding=UTF-8</opt>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.5.5.0</fileVersion>
+    <txtFileVersion>1.5.5</txtFileVersion>
+    <fileDescription>AZOR POS - Point of Sale System</fileDescription>
+    <copyright>Developed by Mazen Mostafa</copyright>
+    <productVersion>1.5.5.0</productVersion>
+    <txtProductVersion>1.5.5</txtProductVersion>
+    <productName>AZOR POS</productName>
+    <companyName>AZOR</companyName>
+    <internalName>AZOR_POS</internalName>
+    <originalFilename>AZOR_POS.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>
+

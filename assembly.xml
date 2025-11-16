@@ -1,0 +1,121 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.0 
+          http://maven.apache.org/xsd/assembly-2.1.0.xsd">
+    <id>distribution</id>
+    <formats>
+        <format>dir</format>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>AZOR_POS</baseDirectory>
+
+    <fileSets>
+        <!-- Main JAR -->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>azorpos.jar</include>
+            </includes>
+        </fileSet>
+
+        <!-- Libraries -->
+        <fileSet>
+            <directory>lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>**/*.jar</include>
+            </includes>
+        </fileSet>
+
+        <!-- Locales -->
+        <fileSet>
+            <directory>locales</directory>
+            <outputDirectory>locales</outputDirectory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.md</include>
+                <include>**/*.sh</include>
+            </includes>
+        </fileSet>
+
+        <!-- Images -->
+        <fileSet>
+            <directory>images</directory>
+            <outputDirectory>images</outputDirectory>
+            <includes>
+                <include>**/*.png</include>
+                <include>**/*.jpg</include>
+                <include>**/*.jpeg</include>
+            </includes>
+        </fileSet>
+
+        <!-- CSS Styles -->
+        <fileSet>
+            <directory>cssStyles</directory>
+            <outputDirectory>cssStyles</outputDirectory>
+        </fileSet>
+
+        <!-- Fonts -->
+        <fileSet>
+            <directory>fonts</directory>
+            <outputDirectory>fonts</outputDirectory>
+        </fileSet>
+
+        <!-- Icon Sets -->
+        <fileSet>
+            <directory>iconsets</directory>
+            <outputDirectory>iconsets</outputDirectory>
+            <includes>
+                <include>**/*.zip</include>
+            </includes>
+        </fileSet>
+
+        <!-- Licensing -->
+        <fileSet>
+            <directory>licensing</directory>
+            <outputDirectory>licensing</outputDirectory>
+        </fileSet>
+
+        <!-- Sound Files -->
+        <fileSet>
+            <directory>.</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.wav</include>
+            </includes>
+        </fileSet>
+
+        <!-- Configuration Template -->
+        <fileSet>
+            <directory>.</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>chromisposconfig.properties</include>
+            </includes>
+        </fileSet>
+
+        <!-- JRE (if exists) -->
+        <fileSet>
+            <directory>jre</directory>
+            <outputDirectory>jre</outputDirectory>
+            <excludes>
+                <exclude>**/.gitkeep</exclude>
+            </excludes>
+        </fileSet>
+
+        <!-- Batch/Shell Scripts -->
+        <fileSet>
+            <directory>scripts</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>AZOR_POS.bat</include>
+                <include>AZOR_POS_Debug.bat</include>
+                <include>README_DISTRIBUTION.txt</include>
+            </includes>
+            <fileMode>0755</fileMode>
+        </fileSet>
+    </fileSets>
+</assembly>
+
